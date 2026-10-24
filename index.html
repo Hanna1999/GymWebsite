@@ -1,89 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#11130f">
-  <meta name="description" content="Your private gym dashboard: personalized workouts, exercise tracking, and progress.">
-  <title>MY IRON PLAN | Personal Gym</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="IRONFORGE — your free personal workout planner. Build a routine around your schedule, goals, and preferred gym equipment.">
+  <title>IRONFORGE — Forge Your Strength</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#home"><span class="brand-mark">M</span> MY <span>IRON PLAN</span></a>
-    <nav><a href="#workouts">My workouts</a><a href="#progress">My progress</a><a href="#guide">Training guide</a></nav>
-    <div class="private-pill"><span></span> PERSONAL PLAN</div>
+  <div class="topline"><span class="spark">✳</span> FREE PERSONAL WORKOUT PLANNER <span class="topline-right">BUILT BY THE WORK.</span></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="IRONFORGE home"><span class="brand-mark">IF</span><span>IRON<span class="accent">FORGE</span><small>FORGE YOUR STRENGTH</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav"><a href="#builder">Workout builder</a><a href="#how-it-works">How it works</a><a href="#exercise-library">Exercise library</a><button class="nav-signin" id="openAuth">SIGN IN / JOIN FREE <span>↗</span></button></nav>
   </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg"></div><div class="hero-content">
+        <p class="eyebrow"><span class="status-dot"></span> YOUR TRAINING. YOUR RULES.</p>
+        <h1>FORGED BY<br><span>YOUR WORK.</span></h1>
+        <p class="hero-copy">Your gym. Your schedule. Your favorite machines. Build a workout plan that fits the way you actually train — completely free.</p>
+        <div class="hero-actions"><a class="button primary" href="#builder">BUILD MY WORKOUT <span>↗</span></a><button class="button ghost" id="heroJoin">CREATE FREE PROFILE <span>＋</span></button></div>
+        <div class="hero-points"><span><b>01</b> Choose your days</span><span><b>02</b> Pick your equipment</span><span><b>03</b> Generate your plan</span></div>
+      </div><div class="hero-tag">EST. BY HANNA <span> / 001</span></div>
+    </section>
+    <section class="ticker"><div>TRAIN WITH INTENT <b>✳</b> PICK YOUR MOVEMENTS <b>✳</b> TRACK YOUR PROGRESS <b>✳</b> REPEAT <b>✳</b> TRAIN WITH INTENT <b>✳</b> PICK YOUR MOVEMENTS <b>✳</b></div></section>
 
-  <main id="home">
-    <section class="hero">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <p class="eyebrow"><span class="green-dot"></span> YOUR TRAINING SPACE</p>
-        <h1>YOUR BODY.<br><span>YOUR MISSION.</span></h1>
-        <p class="hero-copy">A simple, personal training dashboard built around your goal: build muscle, get stronger, and make consistent progress.</p>
-        <div class="hero-buttons"><a class="btn primary" href="#workouts">VIEW MY WORKOUTS ↘</a><button class="btn secondary" id="startToday">START TODAY'S SESSION ↗</button></div>
-        <div class="hero-note"><span class="note-icon">✳</span><span><b>BUILT FOR YOU</b><small>Beginner-friendly · 4 days per week · Gym equipment</small></span></div>
+    <section class="section builder-section" id="builder">
+      <div class="section-heading"><div><p class="eyebrow">YOUR PLAN / 01</p><h2>BUILD YOUR<br><span>OWN SPLIT.</span></h2></div><p class="section-intro">Tell IRONFORGE how often you train and what equipment you like. Your plan is generated from your choices — not a one-size-fits-all routine.</p></div>
+      <div class="builder-layout">
+        <form class="builder-panel" id="builderForm">
+          <div class="panel-heading"><span class="panel-icon">01</span><div><h3>YOUR TRAINING SETUP</h3><p>Start with the basics.</p></div></div>
+          <label class="field-label" for="daysPerWeek">How many days per week?</label>
+          <div class="day-options" id="dayOptions"><button type="button" class="day-option" data-days="2"><strong>2</strong><span>DAYS</span></button><button type="button" class="day-option" data-days="3"><strong>3</strong><span>DAYS</span></button><button type="button" class="day-option active" data-days="4"><strong>4</strong><span>DAYS</span></button><button type="button" class="day-option" data-days="5"><strong>5</strong><span>DAYS</span></button><button type="button" class="day-option" data-days="6"><strong>6</strong><span>DAYS</span></button></div>
+          <input type="hidden" id="daysPerWeek" value="4">
+          <label class="field-label" for="goal">Main goal</label><select id="goal" class="select-field"><option value="muscle">Build muscle</option><option value="strength">Get stronger</option><option value="recomp">Build muscle + lose fat</option><option value="fitness">General fitness</option></select>
+          <label class="field-label" for="level">Training experience</label><select id="level" class="select-field"><option value="beginner">Beginner</option><option value="intermediate">Intermediate</option><option value="advanced">Advanced</option></select>
+          <div class="panel-divider"></div>
+          <div class="panel-heading small-heading"><span class="panel-icon">02</span><div><h3>CHOOSE YOUR EQUIPMENT</h3><p>Select the machines and movements you prefer.</p></div></div>
+          <div class="equipment-tools"><button type="button" class="text-button" id="selectAll">Select all</button><button type="button" class="text-button" id="clearAll">Clear all</button></div>
+          <div class="equipment-grid" id="equipmentGrid">
+            <label class="equipment-choice"><input type="checkbox" value="chestMachine" checked><span><b>Chest press machine</b><small>Chest / triceps</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="latPulldown" checked><span><b>Lat pulldown</b><small>Back / biceps</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="cableRow" checked><span><b>Seated cable row</b><small>Back</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="shoulderPress" checked><span><b>Shoulder press machine</b><small>Shoulders</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="legPress" checked><span><b>Leg press</b><small>Quads / glutes</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="legCurl" checked><span><b>Leg curl machine</b><small>Hamstrings</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="legExtension" checked><span><b>Leg extension</b><small>Quads</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="cableTriceps" checked><span><b>Cable triceps pushdown</b><small>Triceps</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="bicepsCurl" checked><span><b>Biceps curl machine</b><small>Biceps</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="lateralRaise" checked><span><b>Lateral raise machine</b><small>Side delts</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="smithSquat" checked><span><b>Smith machine squat</b><small>Quads / glutes</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="dumbbells" checked><span><b>Dumbbells + bench</b><small>Free-weight options</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="cableFly" checked><span><b>Cable fly</b><small>Chest</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="hipHinge" checked><span><b>Dumbbell Romanian deadlift</b><small>Hamstrings / glutes</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="calfRaise" checked><span><b>Calf raise machine</b><small>Calves</small></span></label>
+            <label class="equipment-choice"><input type="checkbox" value="abMachine" checked><span><b>Ab machine / plank</b><small>Core</small></span></label>
+          </div>
+          <p class="form-note" id="equipmentNote">Choose at least 4 movements/equipment options to generate a balanced plan.</p>
+          <button class="button primary full-width" type="submit">GENERATE MY PLAN <span>↗</span></button>
+        </form>
+        <div class="results-panel" id="planResults">
+          <div class="empty-state" id="emptyState"><div class="empty-symbol">IF</div><p class="eyebrow">YOUR NEXT CHAPTER</p><h3>YOUR PLAN<br><span>STARTS HERE.</span></h3><p>Choose your training days and preferred equipment, then generate your personal workout split.</p><div class="empty-checks"><span>✓ Tailored to your schedule</span><span>✓ Uses your selected equipment</span><span>✓ Exercise demo links included</span></div></div>
+          <div id="generatedPlan" hidden></div>
+        </div>
       </div>
-      <div class="hero-label">CONSISTENCY OVER PERFECTION / 001</div>
     </section>
 
-    <section class="dashboard section">
-      <div class="section-heading"><div><p class="eyebrow">YOUR DASHBOARD / 01</p><h2>THE PLAN.<br><span>AT A GLANCE.</span></h2></div><p class="muted">Keep it simple. Follow the plan, log your work, and let consistency add up.</p></div>
-      <div class="stats-grid">
-        <article class="stat-card"><span class="stat-icon">▦</span><p>WEEKLY TARGET</p><strong>4 <small>days</small></strong><span class="stat-foot">Upper / Lower split</span></article>
-        <article class="stat-card"><span class="stat-icon">↗</span><p>MAIN GOAL</p><strong class="stat-word">MUSCLE</strong><span class="stat-foot">Build strength over time</span></article>
-        <article class="stat-card"><span class="stat-icon">◷</span><p>SESSION LENGTH</p><strong>50–70 <small>min</small></strong><span class="stat-foot">Warm-up included</span></article>
-        <article class="stat-card"><span class="stat-icon">✓</span><p>SESSIONS COMPLETED</p><strong id="totalSessions">0</strong><span class="stat-foot">Saved on this device</span></article>
-      </div>
-    </section>
+    <section class="how-section" id="how-it-works"><div class="section"><div class="section-heading"><div><p class="eyebrow">THE IRONFORGE METHOD / 02</p><h2>LESS GUESSING.<br><span>MORE TRAINING.</span></h2></div><p class="section-intro">A routine should work for you. You stay in control of the days, the movements, and the pace.</p></div><div class="steps-grid"><article><span>01 / PICK</span><h3>YOUR DAYS.</h3><p>Choose from two to six gym days each week. IRONFORGE selects a split designed around that schedule.</p></article><article><span>02 / PERSONALIZE</span><h3>YOUR MOVES.</h3><p>Only your selected equipment and exercise preferences are used when building the plan.</p></article><article><span>03 / PROGRESS</span><h3>YOUR WAY.</h3><p>Check off exercises, record sets and reps, and save your plan in this browser.</p></article></div></div></section>
 
-    <section class="section workout-section" id="workouts">
-      <div class="section-heading"><div><p class="eyebrow">YOUR TRAINING / 02</p><h2>FOUR DAYS.<br><span>ONE STRONGER YOU.</span></h2></div><p class="muted">Start with a weight you can control. Rest between sets and record your results after each exercise.</p></div>
-      <div class="day-tabs" role="tablist" aria-label="Workout days">
-        <button class="day-tab active" data-day="upperA">DAY 01 <small>UPPER A</small></button>
-        <button class="day-tab" data-day="lowerA">DAY 02 <small>LOWER A</small></button>
-        <button class="day-tab" data-day="upperB">DAY 03 <small>UPPER B</small></button>
-        <button class="day-tab" data-day="lowerB">DAY 04 <small>LOWER B</small></button>
-      </div>
-      <div class="workout-meta"><div><span class="green-dot"></span><span id="workoutFocus">CHEST · BACK · SHOULDERS · ARMS</span></div><span id="exerciseCount">7 EXERCISES</span></div>
-      <div id="exerciseList" class="exercise-list"></div>
-      <div class="workout-actions"><p id="workoutHint">Beginner tip: use light weights while you learn each movement.</p><button class="btn primary" id="completeWorkout">MARK WORKOUT COMPLETE ✓</button></div>
-    </section>
+    <section class="section library-section" id="exercise-library"><div class="section-heading"><div><p class="eyebrow">MOVEMENT GUIDE / 03</p><h2>LEARN THE<br><span>MOVEMENT.</span></h2></div><p class="section-intro">Every generated exercise includes a demonstration search, so you can review the setup and technique before your first set.</p></div><div class="library-cards"><article><div class="library-visual visual-chest"><span>01</span><b>CHEST</b></div><h3>Chest press machine</h3><p>Keep your back against the pad and press smoothly without locking your elbows hard.</p><a href="https://www.youtube.com/results?search_query=chest+press+machine+proper+form" target="_blank" rel="noopener">WATCH DEMO ↗</a></article><article><div class="library-visual visual-back"><span>02</span><b>BACK</b></div><h3>Lat pulldown</h3><p>Pull toward your upper chest with a controlled motion; avoid swinging your torso.</p><a href="https://www.youtube.com/results?search_query=lat+pulldown+proper+form" target="_blank" rel="noopener">WATCH DEMO ↗</a></article><article><div class="library-visual visual-legs"><span>03</span><b>LEGS</b></div><h3>Leg press</h3><p>Keep your hips against the seat and use a range of motion you can control comfortably.</p><a href="https://www.youtube.com/results?search_query=leg+press+proper+form" target="_blank" rel="noopener">WATCH DEMO ↗</a></article></div><p class="fine-print">Exercise demonstrations open external video search results. Choose a reputable coach and ask gym staff to check your form when learning a movement.</p></section>
 
-    <section class="section progress-section" id="progress">
-      <div class="section-heading"><div><p class="eyebrow">YOUR RECORD / 03</p><h2>SMALL WINS.<br><span>REAL PROGRESS.</span></h2></div><p class="muted">Your logs are stored locally in this browser. No account, subscription, or payment is required.</p></div>
-      <div class="progress-layout">
-        <div class="progress-card"><div class="card-top"><div><p class="eyebrow">TRAINING HISTORY</p><h3>COMPLETED SESSIONS</h3></div><span class="big-number" id="historyCount">0</span></div><div id="historyList" class="history-list"><p class="empty-state">Your completed workouts will appear here.</p></div><button class="text-button" id="resetProgress">RESET MY TRAINING HISTORY</button></div>
-        <div class="progress-card weight-card"><p class="eyebrow">OPTIONAL CHECK-IN</p><h3>BODY WEIGHT</h3><p class="muted small">Only enter this if tracking body weight is useful for you. Weight alone doesn't measure muscle gain.</p><form id="weightForm"><label for="weightInput">Weight (kg)</label><div class="weight-entry"><input id="weightInput" type="number" min="1" max="500" step="0.1" placeholder="e.g. 73"><button class="btn primary" type="submit">SAVE</button></div></form><div class="weight-result"><span>LATEST ENTRY</span><strong id="latestWeight">—</strong></div><div id="weightHistory" class="weight-history"></div></div>
-      </div>
-    </section>
-
-    <section class="section guide-section" id="guide">
-      <div class="section-heading"><div><p class="eyebrow">YOUR RULES / 04</p><h2>TRAIN SMART.<br><span>STAY CONSISTENT.</span></h2></div></div>
-      <div class="guide-grid">
-        <article><span>01</span><h3>START LIGHT</h3><p>For the first two weeks, learn the equipment and technique. Stop each set with around 2–3 good repetitions left.</p></article>
-        <article><span>02</span><h3>TRACK YOUR LIFTS</h3><p>Record the weight and reps you complete. When all sets feel controlled at the top of the rep range, increase weight a little.</p></article>
-        <article><span>03</span><h3>RECOVER</h3><p>Rest between hard sessions, sleep consistently, and take a rest day when you need one.</p></article>
-        <article><span>04</span><h3>FUEL SAFELY</h3><p>Eat and drink according to your needs. Because you've had gastric bypass surgery, confirm your protein target, hydration approach, vitamins, and lab monitoring with your bariatric team.</p></article>
-      </div>
-      <p class="medical-note">Safety note: this is general fitness guidance, not medical care. Follow any restrictions from your healthcare team. Stop if you feel faint, have chest pain, or experience significant or unusual pain.</p>
-    </section>
+    <section class="join-banner"><div><p class="eyebrow">YOUR PROFILE / 04</p><h2>YOUR PLAN.<br><span>YOUR PROGRESS.</span></h2><p>Create a free local profile to save your preferred setup on this device.</p></div><button class="button primary" id="joinBottom">JOIN IRONFORGE FREE ↗</button></section>
   </main>
+  <footer><a class="brand" href="#home"><span class="brand-mark">IF</span><span>IRON<span class="accent">FORGE</span><small>FORGE YOUR STRENGTH</small></span></a><p>BUILT BY THE WORK. © <span id="year"></span> IRONFORGE</p><a href="#home">BACK TO TOP ↑</a></footer>
 
-  <footer><a class="brand" href="#home"><span class="brand-mark">M</span> MY <span>IRON PLAN</span></a><p>PRIVATE TRAINING DASHBOARD · FREE TO USE</p><button id="clearAll" class="text-button">CLEAR SAVED DATA</button></footer>
-
-  <button id="chatLauncher" class="chat-launcher" aria-expanded="false"><span>✳</span> MY FITNESS ASSISTANT <i></i></button>
-  <section id="chatPanel" class="chat-panel" aria-label="Personal fitness assistant" aria-hidden="true">
-    <div class="chat-header"><div class="bot-avatar">M</div><div><b>MY FITNESS ASSISTANT</b><small><i></i> PERSONAL TRAINING HELP</small></div><button id="closeChat" aria-label="Close chat">×</button></div>
-    <div id="chatMessages" class="chat-messages" aria-live="polite"><div class="message bot">Hey! I'm your fitness assistant. Ask me about your four workouts, exercise technique, progression, rest, or general nutrition habits.</div></div>
-    <div class="quick-prompts"><button data-chat="Explain how to progress my weights">Progression</button><button data-chat="How do I warm up?">Warm-up</button><button data-chat="What should I do if I miss a workout?">Missed workout</button></div>
-    <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Ask about your training..." autocomplete="off" required><button aria-label="Send message">↑</button></form>
-    <p class="chat-disclaimer">Local demo assistant · Not medical advice</p>
-  </section>
+  <div class="modal-backdrop" id="authModal" hidden><section class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle"><button class="modal-close" id="closeAuth" aria-label="Close">×</button><div class="modal-brand"><span class="brand-mark">IF</span></div><p class="eyebrow">FREE MEMBER PROFILE</p><h2 id="authTitle">JOIN THE<br><span>FORGE.</span></h2><p class="auth-intro">Save your name and workout preferences in this browser. No payment required.</p><div class="auth-tabs"><button type="button" class="auth-tab active" data-mode="register">CREATE PROFILE</button><button type="button" class="auth-tab" data-mode="signin">SIGN IN</button></div><form id="authForm"><label class="field-label" for="authName">Your name</label><input class="select-field" id="authName" name="name" placeholder="e.g. Alex" autocomplete="name" required><label class="field-label" for="authEmail">Email address</label><input class="select-field" id="authEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" required><label class="field-label" for="authPassword">Password (demo only)</label><input class="select-field" id="authPassword" name="password" type="password" placeholder="At least 6 characters" minlength="6" autocomplete="new-password" required><p class="auth-error" id="authError" role="alert"></p><button class="button primary full-width" type="submit" id="authSubmit">CREATE FREE PROFILE ↗</button></form><p class="privacy-note">Prototype notice: this static version saves a profile only in this browser. It does not create a secure online account, verify email, or sync across devices. Do not use a real or reused password. A public launch needs a secure authentication backend.</p></section></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="script.js"></script>
-</body>
-</html>
+</body></html>

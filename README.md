@@ -1,22 +1,24 @@
-# MY IRON PLAN — personal gym dashboard
+# IRONFORGE — Personal Workout Planner
 
-A free-to-use personal workout website made with plain HTML, CSS, and JavaScript. No paid membership or API key is needed.
+A free, responsive front-end prototype for building a workout split around how many days per week you train and which gym machines/equipment you prefer.
 
-## Start
-1. Extract `my-personal-gym.zip`.
-2. Open `index.html` in your browser, or use VS Code with Live Server.
-3. Choose a workout tab, log weights/reps, tick exercises off, and mark the session complete.
-4. Progress is stored in this browser using localStorage.
+## Run it
+1. Extract the ZIP file.
+2. Open the `ironforge-gym-website` folder in VS Code.
+3. Recommended: use the **Live Server** extension and open `index.html` through localhost. (Browser password hashing requires a secure context.)
+4. You can also open `index.html` directly, but some browser security features may not work from a `file://` URL.
 
-## Files
-- `index.html` — page structure
-- `style.css` — visual design and responsive layout
-- `script.js` — four-day workout plan, local tracking, and rule-based chatbot
+## Features
+- IRONFORGE dark/charcoal and red branding.
+- Choose 2–6 training days per week.
+- Choose a goal and experience level.
+- Select preferred gym equipment; the plan generator only selects matching movements.
+- Generated split with sets, rep ranges, completion checkboxes, and exercise-demo search links.
+- Optional local profile and sign-in demo.
+- Saves the selected plan and progress in the current browser using `localStorage`.
+- No paid APIs, account service, or hosting required to run the prototype.
 
-## Personalization and limitations
-The included plan is a general beginner-friendly four-day upper/lower routine. It is not a substitute for individualized coaching or medical clearance. Because the user has mentioned gastric bypass surgery, nutrition guidance intentionally refers protein/calorie targets, hydration, supplements, and monitoring to the user's bariatric team.
+## Important limitations before a public launch
+This is a static front-end prototype. Profiles, workout plans, and progress are saved only in the current browser/device. The registration form hashes the password locally for a demo, but that is **not production-grade authentication**. Do not use real/reused passwords. There is no server, database, email verification, password reset, cross-device sync, or account recovery. Before letting the public register, replace the demo auth with a secure authentication provider and backend/database, apply rate limiting and server-side validation, and publish privacy terms. Never store plain-text passwords.
 
-The chatbot uses predefined local JavaScript responses. It is not an online AI model, and does not send messages to a server. The site itself is free to use; fonts and photos are loaded from online services, so those visual assets require internet access. Training logs are stored only in the current browser/device and may be lost if browser data is cleared.
-
-## Exercise GIF demonstrations
-The workout cards try to load animated exercise demonstrations from the public ExerciseGymGifsDB dataset via jsDelivr. An internet connection is required for these GIFs. The dataset notes that GIFs belong to their respective authors; see the source repository and its usage notes: https://github.com/JahelCuadrado/ExerciseGymGifsDB
+Exercise demo buttons open YouTube search results rather than embedding a specific creator's media, so you can choose an appropriate demonstration. The plan generator is a simple starter algorithm, not medical or professional coaching advice.

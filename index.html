@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11130f">
+  <meta name="description" content="Your private gym dashboard: personalized workouts, exercise tracking, and progress.">
+  <title>MY IRON PLAN | Personal Gym</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home"><span class="brand-mark">M</span> MY <span>IRON PLAN</span></a>
+    <nav><a href="#workouts">My workouts</a><a href="#progress">My progress</a><a href="#guide">Training guide</a></nav>
+    <div class="private-pill"><span></span> PERSONAL PLAN</div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="green-dot"></span> YOUR TRAINING SPACE</p>
+        <h1>YOUR BODY.<br><span>YOUR MISSION.</span></h1>
+        <p class="hero-copy">A simple, personal training dashboard built around your goal: build muscle, get stronger, and make consistent progress.</p>
+        <div class="hero-buttons"><a class="btn primary" href="#workouts">VIEW MY WORKOUTS ↘</a><button class="btn secondary" id="startToday">START TODAY'S SESSION ↗</button></div>
+        <div class="hero-note"><span class="note-icon">✳</span><span><b>BUILT FOR YOU</b><small>Beginner-friendly · 4 days per week · Gym equipment</small></span></div>
+      </div>
+      <div class="hero-label">CONSISTENCY OVER PERFECTION / 001</div>
+    </section>
+
+    <section class="dashboard section">
+      <div class="section-heading"><div><p class="eyebrow">YOUR DASHBOARD / 01</p><h2>THE PLAN.<br><span>AT A GLANCE.</span></h2></div><p class="muted">Keep it simple. Follow the plan, log your work, and let consistency add up.</p></div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon">▦</span><p>WEEKLY TARGET</p><strong>4 <small>days</small></strong><span class="stat-foot">Upper / Lower split</span></article>
+        <article class="stat-card"><span class="stat-icon">↗</span><p>MAIN GOAL</p><strong class="stat-word">MUSCLE</strong><span class="stat-foot">Build strength over time</span></article>
+        <article class="stat-card"><span class="stat-icon">◷</span><p>SESSION LENGTH</p><strong>50–70 <small>min</small></strong><span class="stat-foot">Warm-up included</span></article>
+        <article class="stat-card"><span class="stat-icon">✓</span><p>SESSIONS COMPLETED</p><strong id="totalSessions">0</strong><span class="stat-foot">Saved on this device</span></article>
+      </div>
+    </section>
+
+    <section class="section workout-section" id="workouts">
+      <div class="section-heading"><div><p class="eyebrow">YOUR TRAINING / 02</p><h2>FOUR DAYS.<br><span>ONE STRONGER YOU.</span></h2></div><p class="muted">Start with a weight you can control. Rest between sets and record your results after each exercise.</p></div>
+      <div class="day-tabs" role="tablist" aria-label="Workout days">
+        <button class="day-tab active" data-day="upperA">DAY 01 <small>UPPER A</small></button>
+        <button class="day-tab" data-day="lowerA">DAY 02 <small>LOWER A</small></button>
+        <button class="day-tab" data-day="upperB">DAY 03 <small>UPPER B</small></button>
+        <button class="day-tab" data-day="lowerB">DAY 04 <small>LOWER B</small></button>
+      </div>
+      <div class="workout-meta"><div><span class="green-dot"></span><span id="workoutFocus">CHEST · BACK · SHOULDERS · ARMS</span></div><span id="exerciseCount">7 EXERCISES</span></div>
+      <div id="exerciseList" class="exercise-list"></div>
+      <div class="workout-actions"><p id="workoutHint">Beginner tip: use light weights while you learn each movement.</p><button class="btn primary" id="completeWorkout">MARK WORKOUT COMPLETE ✓</button></div>
+    </section>
+
+    <section class="section progress-section" id="progress">
+      <div class="section-heading"><div><p class="eyebrow">YOUR RECORD / 03</p><h2>SMALL WINS.<br><span>REAL PROGRESS.</span></h2></div><p class="muted">Your logs are stored locally in this browser. No account, subscription, or payment is required.</p></div>
+      <div class="progress-layout">
+        <div class="progress-card"><div class="card-top"><div><p class="eyebrow">TRAINING HISTORY</p><h3>COMPLETED SESSIONS</h3></div><span class="big-number" id="historyCount">0</span></div><div id="historyList" class="history-list"><p class="empty-state">Your completed workouts will appear here.</p></div><button class="text-button" id="resetProgress">RESET MY TRAINING HISTORY</button></div>
+        <div class="progress-card weight-card"><p class="eyebrow">OPTIONAL CHECK-IN</p><h3>BODY WEIGHT</h3><p class="muted small">Only enter this if tracking body weight is useful for you. Weight alone doesn't measure muscle gain.</p><form id="weightForm"><label for="weightInput">Weight (kg)</label><div class="weight-entry"><input id="weightInput" type="number" min="1" max="500" step="0.1" placeholder="e.g. 73"><button class="btn primary" type="submit">SAVE</button></div></form><div class="weight-result"><span>LATEST ENTRY</span><strong id="latestWeight">—</strong></div><div id="weightHistory" class="weight-history"></div></div>
+      </div>
+    </section>
+
+    <section class="section guide-section" id="guide">
+      <div class="section-heading"><div><p class="eyebrow">YOUR RULES / 04</p><h2>TRAIN SMART.<br><span>STAY CONSISTENT.</span></h2></div></div>
+      <div class="guide-grid">
+        <article><span>01</span><h3>START LIGHT</h3><p>For the first two weeks, learn the equipment and technique. Stop each set with around 2–3 good repetitions left.</p></article>
+        <article><span>02</span><h3>TRACK YOUR LIFTS</h3><p>Record the weight and reps you complete. When all sets feel controlled at the top of the rep range, increase weight a little.</p></article>
+        <article><span>03</span><h3>RECOVER</h3><p>Rest between hard sessions, sleep consistently, and take a rest day when you need one.</p></article>
+        <article><span>04</span><h3>FUEL SAFELY</h3><p>Eat and drink according to your needs. Because you've had gastric bypass surgery, confirm your protein target, hydration approach, vitamins, and lab monitoring with your bariatric team.</p></article>
+      </div>
+      <p class="medical-note">Safety note: this is general fitness guidance, not medical care. Follow any restrictions from your healthcare team. Stop if you feel faint, have chest pain, or experience significant or unusual pain.</p>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#home"><span class="brand-mark">M</span> MY <span>IRON PLAN</span></a><p>PRIVATE TRAINING DASHBOARD · FREE TO USE</p><button id="clearAll" class="text-button">CLEAR SAVED DATA</button></footer>
+
+  <button id="chatLauncher" class="chat-launcher" aria-expanded="false"><span>✳</span> MY FITNESS ASSISTANT <i></i></button>
+  <section id="chatPanel" class="chat-panel" aria-label="Personal fitness assistant" aria-hidden="true">
+    <div class="chat-header"><div class="bot-avatar">M</div><div><b>MY FITNESS ASSISTANT</b><small><i></i> PERSONAL TRAINING HELP</small></div><button id="closeChat" aria-label="Close chat">×</button></div>
+    <div id="chatMessages" class="chat-messages" aria-live="polite"><div class="message bot">Hey! I'm your fitness assistant. Ask me about your four workouts, exercise technique, progression, rest, or general nutrition habits.</div></div>
+    <div class="quick-prompts"><button data-chat="Explain how to progress my weights">Progression</button><button data-chat="How do I warm up?">Warm-up</button><button data-chat="What should I do if I miss a workout?">Missed workout</button></div>
+    <form id="chatForm" class="chat-form"><input id="chatInput" placeholder="Ask about your training..." autocomplete="off" required><button aria-label="Send message">↑</button></form>
+    <p class="chat-disclaimer">Local demo assistant · Not medical advice</p>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
